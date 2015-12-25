@@ -8,7 +8,7 @@ import com.example.damien.projetir.CustomEdit.KeyLogger;
 import com.example.damien.projetir.Tests.TestManager;
 
 public class TestActivity extends AppCompatActivity {
-//Commentaire
+//Commentaire 2
     private CustomEdit mainEdit;
     private TestManager testManager;
     private String login;
