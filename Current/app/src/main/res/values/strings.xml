@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ProjetIR</string>
+    <string name="buttonGOString">GO</string>
+    <string name="buttonOK">OK</string>
+</resources>
