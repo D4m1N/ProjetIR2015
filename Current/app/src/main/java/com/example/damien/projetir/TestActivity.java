@@ -12,7 +12,7 @@ public class TestActivity extends AppCompatActivity {
     private CustomEdit mainEdit;
     private TestManager testManager;
     private String login;
-
+//
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
