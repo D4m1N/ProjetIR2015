@@ -41,9 +41,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:text="@string/GoBButton"
-                android:id="@+id/button3"
+                android:id="@+id/goBButton"
                 android:layout_weight="0.35"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:onClick="onGOClick"/>
         </LinearLayout>
 
     </LinearLayout>
