@@ -19,6 +19,7 @@ import com.example.damien.projetir.Tests.Orientation.Orientation;
 
 /**
  * Created by Damien on 01/12/2015.
+ * No Warning
  */
 public class CustomEdit extends EditText
 {
@@ -48,6 +49,20 @@ public class CustomEdit extends EditText
 
     private boolean started;
     private float chronometer;
+
+
+
+    private String dataLogs;                                                                        //Variable contenant les logs, complété à chaque action,
+
+    public String getDataLogs()
+    {
+        return dataLogs;
+    }
+
+    public void setDataLogs(String dataLogs)
+    {
+        this.dataLogs = dataLogs;
+    }
 
 
     public int get_nbErrors()
@@ -127,6 +142,10 @@ public class CustomEdit extends EditText
         this.chronometer = chronometer;
     }
 
+    public float getCurrentTime()
+    {
+        return System.nanoTime() - getChronometer();
+    }
 
     public void startChrono()
     {
@@ -159,7 +178,7 @@ public class CustomEdit extends EditText
                     if (keyLogD.getDeleteDone() == 0)
                         reloadDueToError();
 
-                    if (!(s.subSequence(start, start + count).length() == 0 || s == null || s.toString().length() == 0)) {
+                    if (!(s.subSequence(start, start + count).length() == 0 || s.toString().length() == 0)) {
                         reloadDueToError();
                     }
                 }
@@ -292,15 +311,14 @@ public class CustomEdit extends EditText
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event)
+    {
 
-        if(!isStarted())
+        if (!isStarted())
             return false;
 
-        if(fingerState == false)
-            return false;
-        else
-            return super.onTouchEvent(event);
+        //Si on est pas en mode finger, on renvoie faux, sinon on laisse OnTouchEvent mère gérer.
+        return fingerState && super.onTouchEvent(event);
 
     }
 

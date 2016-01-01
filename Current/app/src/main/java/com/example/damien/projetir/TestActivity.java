@@ -19,7 +19,7 @@ public class TestActivity extends AppCompatActivity {
     private TestManager testManager;
     private String login;
     private boolean canGo[];
-//
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -44,19 +44,5 @@ public class TestActivity extends AppCompatActivity {
         testManager.generateContext();
 
     }
-
-
-   /* public void onGOClick(View v)
-    {
-        /*Toast.makeText(this, Boolean.toString(canGo), Toast.LENGTH_SHORT).show();
-        if(canGo)
-        {
-            mainEdit.setStarted(true);
-            mainEdit.startChrono();
-            mainEdit.showKeyboard();
-        }
-        canGo = true;*/
-    //}
-
 
 }

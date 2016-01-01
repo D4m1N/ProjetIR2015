@@ -37,7 +37,7 @@ public class PresentationActivity extends AppCompatActivity {
 
         this.textView = (TextView)findViewById(R.id.textView);
 
-
+                                                                                                    //Changer settings en le fichiers d'initialisation
         //On lis le fichier _settings pour recupérer la config de premier test
         File settings = new File(Environment.getExternalStorageDirectory() + "/Tests/_settings.txt");
         StringBuilder text = new StringBuilder();

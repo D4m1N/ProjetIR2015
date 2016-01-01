@@ -23,6 +23,7 @@ import java.util.Vector;
 
 /**
  * Created by Damien on 01/12/2015.
+ * WR
  */
 public class TestManager
 {
@@ -186,7 +187,8 @@ public class TestManager
             edit.setStarted(false);
             edit.hideKeyboard();
 
-            String testDatas = new String();
+            String testDatas = new String();                                                        //= edit.getDataLogs();
+
 
             testDatas = testDatas.concat("Test NB : " + currentTestNumber + '\n');
             testDatas = testDatas.concat("Chrono(in Sec) : " + edit.getChronometer() / 1000000000 + '\n');
