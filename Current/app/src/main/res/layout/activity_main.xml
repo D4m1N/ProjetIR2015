@@ -33,7 +33,6 @@
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_weight="0.35"
-                android:onClick="onGOClick"
                 android:visibility="visible"
                 android:nestedScrollingEnabled="true"/>
 
@@ -43,8 +42,7 @@
                 android:text="@string/GoBButton"
                 android:id="@+id/goBButton"
                 android:layout_weight="0.35"
-                android:layout_gravity="center"
-                android:onClick="onGOClick"/>
+                android:layout_gravity="center"/>
         </LinearLayout>
 
     </LinearLayout>

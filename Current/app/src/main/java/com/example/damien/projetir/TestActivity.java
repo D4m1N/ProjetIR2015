@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.damien.projetir.CustomEdit.CustomEdit;
 import com.example.damien.projetir.CustomEdit.KeyLogger;
@@ -17,14 +18,15 @@ public class TestActivity extends AppCompatActivity {
 
     private TestManager testManager;
     private String login;
-    private boolean canGo;
+    private boolean canGo[];
 //
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        canGo = false;
+        canGo = new boolean[1];
+        canGo[0] = false;
 
         login = getIntent().getStringExtra("Login");
 
@@ -36,24 +38,25 @@ public class TestActivity extends AppCompatActivity {
         this.testManager = new TestManager(this.mainEdit,login,getIntent().getStringExtra("FirstTest"));
 
         this.mainEdit.setOnKeyListener(new KeyLogger(getApplicationContext(),mainEdit.getKeyLogD(),testManager));
-        this.goA.setOnTouchListener(new GoButtonListener(canGo));
-        this.goB.setOnTouchListener(new GoButtonListener(canGo));
+        this.goA.setOnTouchListener(new GoButtonListener(canGo, this.mainEdit));
+        this.goB.setOnTouchListener(new GoButtonListener(canGo, this.mainEdit));
 
         testManager.generateContext();
 
     }
 
 
-    public void onGOClick(View v)
+   /* public void onGOClick(View v)
     {
+        /*Toast.makeText(this, Boolean.toString(canGo), Toast.LENGTH_SHORT).show();
         if(canGo)
         {
             mainEdit.setStarted(true);
             mainEdit.startChrono();
             mainEdit.showKeyboard();
         }
-        canGo = true;
-    }
+        canGo = true;*/
+    //}
 
 
 }
