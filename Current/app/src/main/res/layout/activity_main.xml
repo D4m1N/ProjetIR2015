@@ -18,17 +18,33 @@
             android:id="@+id/mainEdit"
             android:layout_weight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/buttonGOString"
-            android:id="@+id/buttonGO"
-            android:clickable="true"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_weight="0.35"
-            android:onClick="onGOClick"
-            android:visibility="visible"
-            android:nestedScrollingEnabled="true"/>
+            android:layout_weight="0.35">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/buttonGOString"
+                android:id="@+id/buttonGO"
+                android:clickable="true"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_weight="0.35"
+                android:onClick="onGOClick"
+                android:visibility="visible"
+                android:nestedScrollingEnabled="true"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/GoBButton"
+                android:id="@+id/button3"
+                android:layout_weight="0.35"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>
