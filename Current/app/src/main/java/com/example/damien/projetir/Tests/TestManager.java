@@ -183,11 +183,13 @@ public class TestManager
     {
         if(edit.isTestCompleted())
         {
+            edit.writeDataLogs(CustomEdit.LogAction.LOG_ACTION_RETURN,"Return pressed, test complete");
+
             edit.stopChrono();
             edit.setStarted(false);
             edit.hideKeyboard();
 
-            String testDatas = new String();                                                        //= edit.getDataLogs();
+            String testDatas = edit.getDataLogs();
 
 
             testDatas = testDatas.concat("Test NB : " + currentTestNumber + '\n');
@@ -207,6 +209,7 @@ public class TestManager
         }
         else
         {
+            edit.writeDataLogs(CustomEdit.LogAction.LOG_ACTION_RETURN,"ERROR : Return pressed, test not complete");
             edit.addError();
             Toast.makeText(edit.getContext(), "Vous n'avez pas rempli le test", Toast.LENGTH_SHORT).show();
         }
