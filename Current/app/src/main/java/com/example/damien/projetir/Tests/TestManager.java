@@ -4,10 +4,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.damien.projetir.ChooseYourName;
 import com.example.damien.projetir.CustomEdit.CustomEdit;
+import com.example.damien.projetir.CustomEdit.Logger;
 import com.example.damien.projetir.Presentations.PresentationFingerTest;
 import com.example.damien.projetir.Presentations.PresentationShiftTests;
 import com.example.damien.projetir.Presentations.Presentations;
@@ -175,6 +177,14 @@ public class TestManager
             scenarios.remove(randomNumber);
 
             this.currentTestNumber++;
+
+            edit.getLogger().writeSingleDataLogs("<"+ Logger.LogAction.LOG_ACTION_INIT.name()+ ">" + '\n');
+            edit.getLogger().writeSingleDataLogs("<TestNumber>" + currentTestNumber + "</TestNumber>" + '\n');
+            edit.getLogger().writeSingleDataLogs("<Difficulty>" + edit.get_Difficulty().getLabel() + "</Difficulty>" + '\n');
+            edit.getLogger().writeSingleDataLogs("<Distance>" + edit.get_Distance().getLabel() + "</Distance>" + '\n');
+            edit.getLogger().writeSingleDataLogs("<Orientation>" + edit.get_Orientation().getLabel() + "</Orientation>" + '\n');
+            edit.getLogger().writeSingleDataLogs("<FingerAllowed>" + edit.getFingerState()+ "</FingerAllowed>" + '\n');
+
             edit.resetForNewTest();
         }
     }
@@ -183,33 +193,27 @@ public class TestManager
     {
         if(edit.isTestCompleted())
         {
-            edit.writeDataLogs(CustomEdit.LogAction.LOG_ACTION_RETURN,"Return pressed, test complete");
+            edit.getLogger().writeDataLogs(Logger.LogAction.LOG_ACTION_RETURN, "Return pressed, test complete",edit.getCurrentTime());
 
             edit.stopChrono();
             edit.setStarted(false);
             edit.hideKeyboard();
 
-            String testDatas = edit.getDataLogs();
+            edit.getLogger().writeSingleDataLogs("<Errors>" + edit.get_nbErrors() + "</Errors>" + '\n');
+            edit.getLogger().writeSingleDataLogs("<Time>" + edit.getChronometer() / 1000000000 + "</Time>" + '\n');
 
+            edit.getLogger().writeSingleDataLogs("---------------------------------" + '\n');
 
-            testDatas = testDatas.concat("Test NB : " + currentTestNumber + '\n');
-            testDatas = testDatas.concat("Chrono(in Sec) : " + edit.getChronometer() / 1000000000 + '\n');
-            testDatas = testDatas.concat("Errors : " + edit.get_nbErrors() + '\n');
-            testDatas = testDatas.concat("Difficulty : " + edit.get_Difficulty().getLabel() + '\n');
-            testDatas = testDatas.concat("Distance : " + edit.get_Distance().getLabel() + '\n');
-            testDatas = testDatas.concat("Orientation : " + edit.get_Orientation().getLabel() + '\n');
-            testDatas = testDatas.concat("FingerAllowed : " + edit.getFingerState() + '\n');
-
-            testDatas = testDatas.concat("---------------------------------" + '\n');
+            Log.w("FINAL DATA LOG : ", edit.getLogger().getDataLogs());
 
             //Toast.makeText(edit.getContext(), testDatas, Toast.LENGTH_SHORT).show();
-            bundle.putCharSequence("Test " + currentTestNumber, testDatas);
+            bundle.putCharSequence("Test " + currentTestNumber, edit.getLogger().getDataLogs());
 
             generateContext();
         }
         else
         {
-            edit.writeDataLogs(CustomEdit.LogAction.LOG_ACTION_RETURN,"ERROR : Return pressed, test not complete");
+            edit.getLogger().writeDataLogs(Logger.LogAction.LOG_ACTION_RETURN, "ERROR : Return pressed, test not complete", edit.getCurrentTime());
             edit.addError();
             Toast.makeText(edit.getContext(), "Vous n'avez pas rempli le test", Toast.LENGTH_SHORT).show();
         }
