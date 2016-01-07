@@ -139,6 +139,7 @@ public class CustomEdit extends EditText
     {
         if(started)
         {
+            logger.writeSingleDataLogs("</" + logger.getPreviousLogAction().name() + ">");
             logger.writeSingleDataLogs("<" + Logger.LogAction.LOG_ACTION_START.name() + ">");
             logger.writeSingleDataLogs("\n");
             logger.writeSingleDataLogs("New test prepared with following text : " + "\n" + this.getText());

@@ -184,6 +184,7 @@ public class TestManager
             edit.getLogger().writeSingleDataLogs("<Distance>" + edit.get_Distance().getLabel() + "</Distance>" + '\n');
             edit.getLogger().writeSingleDataLogs("<Orientation>" + edit.get_Orientation().getLabel() + "</Orientation>" + '\n');
             edit.getLogger().writeSingleDataLogs("<FingerAllowed>" + edit.getFingerState()+ "</FingerAllowed>" + '\n');
+            edit.getLogger().setPreviousLogAction(Logger.LogAction.LOG_ACTION_INIT);
 
             edit.resetForNewTest();
         }
