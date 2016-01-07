@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.damien.projetir.Presentations.PresentationFingerTest;
 import com.example.damien.projetir.Presentations.Presentations;
 import com.example.damien.projetir.Presentations.PresentationShiftTests;
+import com.example.damien.projetir.Tests.FileManager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -67,6 +68,12 @@ public class ChooseYourName extends AppCompatActivity {
 
         if(spinner.getSelectedItem() != null)
         {
+
+            //
+            InitialisationFile IF = new InitialisationFile(spinner.getSelectedItem().toString());
+            IF.getCurrentTest();
+            //
+
             Intent intent = new Intent(this, PresentationActivity.class);
             intent.putExtra("Login", spinner.getSelectedItem().toString());
 

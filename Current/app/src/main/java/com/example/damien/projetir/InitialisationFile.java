@@ -19,11 +19,11 @@ import java.util.Vector;
  */
 public class InitialisationFile {
 
-    private FileManager fileM;
+    //private FileManager fileM;
+    private String _name;
 
-
-    public InitialisationFile(FileManager file){
-        fileM = file;
+    public InitialisationFile(String name){
+        this._name = name;
     }
 
     private List<String> GetFileContent()
@@ -51,11 +51,11 @@ public class InitialisationFile {
         return fileContent;
     }
 
-    private int NameIsPresent(List<String> fileContent, String name){
+    private int NameIsPresent(List<String> fileContent){
         for(int i=0; i<fileContent.size(); i++) {
             String oneLine = fileContent.get(i);
             if (oneLine.split(":").length > 0) {
-                if (oneLine.split(":")[0].equals(name)) {
+                if (oneLine.split(":")[0].equals(_name)) {
                     return i;
                 }
             }
@@ -64,20 +64,20 @@ public class InitialisationFile {
     }
 
 
-    public boolean addName(String name)
+    public boolean addName()
     {
         List<String> fileContent = GetFileContent();
 
-        if (NameIsPresent(fileContent,name) == -1){
+        if (NameIsPresent(fileContent) == -1){
             if (fileContent.size() == 0)
-                fileContent.add(name+":000000000000000000000111111111111111111111");
+                fileContent.add(_name+":000000000000000000000111111111111111111111");
             else {
                 String oneLine = fileContent.get(0);
                 if (oneLine.split(":").length > 1) {
                     if (oneLine.split(":")[1].charAt(1) == '0') {
-                        fileContent.add(name+":000000000000000000000111111111111111111111");
+                        fileContent.add(_name+":000000000000000000000111111111111111111111");
                     }else{
-                        fileContent.add(name+":111111111111111111111000000000000000000000");
+                        fileContent.add(_name+":111111111111111111111000000000000000000000");
                     }
                 }
             }
@@ -89,14 +89,15 @@ public class InitialisationFile {
 
     }
 
-    public char getCurrentTest(String name)
+    public char getCurrentTest()
     {
         List<String> fileContent = GetFileContent();
 
-        int namePosition = NameIsPresent(fileContent, name);
+        int namePosition = NameIsPresent(fileContent);
 
         if (namePosition != -1) {
-            return fileContent.get(namePosition).split(":")[1].charAt(fileM.getTestNumber(name));
+            FileManager fileM = new FileManager(_name);
+            return fileContent.get(namePosition).split(":")[1].charAt(fileM.getTestNumber(_name));
         }
 
         return ' ';
