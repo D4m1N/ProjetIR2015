@@ -2,7 +2,7 @@ package com.example.damien.projetir.Presentations;
 
 /**
  * Created by Damien on 06/12/2015..
- * Warning !
+ * Warning !//
  */
 public class PresentationFingerTest implements Presentations
 {
