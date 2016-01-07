@@ -112,7 +112,7 @@ public class InitialisationFile {
             outputStream = new FileOutputStream(file);
 
             if (!file.exists()) {
-                file.createNewFile();
+                file.createNewFile(); //
             }
             else
             {
