@@ -110,13 +110,13 @@ public class TestManager
 
     public void handleFirstTest(String in)
     {
-        if(in.matches("Shifts"))
+        if(in.matches("Shifts"))//Tests mouvements relatifs
         {
             edit.setFingerState(false);
             currentTest = new PresentationShiftTests();
         }
 
-        if(in.matches("Finger"))
+        if(in.matches("Finger"))//Tests mouvements absolus
         {
             edit.setFingerState(true);
             currentTest = new PresentationFingerTest();

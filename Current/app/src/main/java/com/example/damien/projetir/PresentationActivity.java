@@ -27,6 +27,7 @@ public class PresentationActivity extends AppCompatActivity {
     private TextView textView;
     private Presentations _presentation;
     private String _settings_FirstTest;
+    private InitialisationFile IF;
 
 
     @Override
@@ -36,49 +37,29 @@ public class PresentationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_presentations);
 
         this.textView = (TextView)findViewById(R.id.textView);
+        this.IF = new InitialisationFile(getIntent().getCharSequenceExtra("Login").toString());
 
-                                                                                                    //Changer settings en le fichiers d'initialisation
-        //On lis le fichier _settings pour recupérer la config de premier test
-        File settings = new File(Environment.getExternalStorageDirectory() + "/Tests/_settings.txt");
-        StringBuilder text = new StringBuilder();
-        try
-        {
-
-            BufferedReader br = new BufferedReader(new FileReader(settings));
-            String line;
-
-            while ((line = br.readLine()) != null)
-            {
-                text.append(line);
-                text.append('\n');
-            }
-            br.close();
-        } catch (IOException e)
-        {
-            Toast.makeText(this, "Aucune Configuration n'a été trouvée", Toast.LENGTH_SHORT).show();
-        }
-
-        _settings_FirstTest = text.toString().split(":")[1].trim();
-
-        _presentation = getPresentation(_settings_FirstTest);
+        _presentation = getPresentation(IF.getCurrentTest());
 
         textView.setText(_presentation.getPresentation());
 
     }
 
-    public Presentations getPresentation(String in)
+    public Presentations getPresentation(int in)
     {
-//
 
-        if(in.matches("Shifts"))
+
+        if(in == 0)
         {
             Toast.makeText(this, "Shifts", Toast.LENGTH_SHORT).show();
+            _settings_FirstTest = "Shifts";
             return new PresentationShiftTests();
         }
 
-        if(in.matches("Finger"))
+        if(in == 1)
         {
             Toast.makeText(this, "Finger", Toast.LENGTH_SHORT).show();
+            _settings_FirstTest = "Finger";
             return new PresentationFingerTest();
         }
 
