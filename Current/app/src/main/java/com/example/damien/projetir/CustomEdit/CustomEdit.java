@@ -243,12 +243,17 @@ public class CustomEdit extends EditText
         initialisation();
     }
 
+    public void resetLoger()
+    {
+        logger.resetDataLogs();
+        logger.setPreviousLogAction(Logger.LogAction.LOG_ACTION_INIT);
+    }
+
     public void initialisation()
     {
 
         logger = new Logger();
-        logger.resetDataLogs();
-        logger.setPreviousLogAction(Logger.LogAction.LOG_ACTION_INIT);
+        resetLoger();
 
         addTextChangedListener(textController);
         keyLogD = new KeyLogData(false,-1,false,false,false,true);

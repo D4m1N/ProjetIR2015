@@ -137,6 +137,7 @@ public class TestManager
                 done = true;
                 edit.set_Difficulty(null);
                 edit.set_Distance(null);
+                bundle.putCharSequence("Results Tests n°" + fileManager.getTestNumber(_login), edit.getLogger().getDataLogs());
                 fileManager.writeFile(bundle);
                 ad
                         .setTitle("Fin des tests")
@@ -151,6 +152,7 @@ public class TestManager
                             }
                         });
                 ad.show();
+                edit.resetLoger();
 
             }
             else//Une des 2 parties seulement est terminée
@@ -192,7 +194,7 @@ public class TestManager
 
     public void validateTest()
     {
-        if(edit.isTestCompleted())
+        if (edit.isTestCompleted())
         {
             edit.getLogger().writeDataLogs(Logger.LogAction.LOG_ACTION_RETURN, "Return pressed, test complete",edit.getCurrentTime());
 
@@ -205,10 +207,6 @@ public class TestManager
 
             edit.getLogger().writeSingleDataLogs("---------------------------------" + '\n');
 
-            Log.w("FINAL DATA LOG : ", edit.getLogger().getDataLogs());
-
-            //Toast.makeText(edit.getContext(), testDatas, Toast.LENGTH_SHORT).show();
-            bundle.putCharSequence("Test " + currentTestNumber, edit.getLogger().getDataLogs());
 
             generateContext();
         }

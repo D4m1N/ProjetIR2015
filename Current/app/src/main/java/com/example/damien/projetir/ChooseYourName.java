@@ -4,20 +4,14 @@ import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.damien.projetir.Presentations.PresentationFingerTest;
-import com.example.damien.projetir.Presentations.Presentations;
-import com.example.damien.projetir.Presentations.PresentationShiftTests;
-import com.example.damien.projetir.Tests.FileManager;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,5 +93,19 @@ public class ChooseYourName extends AppCompatActivity {
         {
             this.addItemToSpinnerNames();
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((event.getAction() == KeyEvent.ACTION_DOWN))
+        {
+            switch(keyCode)
+            {
+                case KeyEvent.KEYCODE_BACK :
+                    return true; // impossible de faire un back, sinon le clavier disparait et c'est la merde;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
