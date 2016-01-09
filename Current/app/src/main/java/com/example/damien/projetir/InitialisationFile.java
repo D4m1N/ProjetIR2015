@@ -70,14 +70,14 @@ public class InitialisationFile {
 
         if (NameIsPresent(fileContent) == -1){
             if (fileContent.size() == 0)
-                fileContent.add(_name+":000000000000000000000111111111111111111111");
+                fileContent.add(_name+":000000000000111111111111");
             else {
                 String oneLine = fileContent.get(0);
                 if (oneLine.split(":").length > 1) {
                     if (oneLine.split(":")[1].charAt(1) == '1') {
-                        fileContent.add(_name+":000000000000000000000111111111111111111111");
+                        fileContent.add(_name+":000000000000111111111111");
                     }else{
-                        fileContent.add(_name+":111111111111111111111000000000000000000000");
+                        fileContent.add(_name+":111111111111000000000000");
                     }
                 }
             }
