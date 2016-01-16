@@ -72,7 +72,7 @@ public class InitialisationFile {
             if (fileContent.size() == 0)
                 fileContent.add(_name+":000000000000111111111111");
             else {
-                String oneLine = fileContent.get(0);
+                String oneLine = fileContent.get(fileContent.size()-1);
                 if (oneLine.split(":").length > 1) {
                     if (oneLine.split(":")[1].charAt(1) == '1') {
                         fileContent.add(_name+":000000000000111111111111");
