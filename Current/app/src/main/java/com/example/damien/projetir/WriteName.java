@@ -9,7 +9,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.damien.projetir.Tests.FileManager;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class WriteName extends AppCompatActivity {
 
@@ -38,8 +43,9 @@ public class WriteName extends AppCompatActivity {
         }
         else
             lenght = 0;
-
+        InitialisationFile IF = new InitialisationFile(name);
         if (this.isPresent(name) == -1) {
+            IF.addName();
 
             name = PATH + (lenght + 1) + "_" + name;
 

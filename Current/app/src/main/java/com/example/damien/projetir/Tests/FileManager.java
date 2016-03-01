@@ -61,6 +61,7 @@ public class FileManager
         _login = login;
     }
 
+
     public boolean writeFile(Bundle bundle)
     {
         String filename = PATH + search_folder_from_login() + "/" + getTestNumber(_login) + ".txt";
