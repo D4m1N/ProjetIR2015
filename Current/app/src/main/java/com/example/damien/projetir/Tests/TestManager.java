@@ -113,14 +113,26 @@ public class TestManager
         if(in.matches("Shifts"))//Tests mouvements relatifs
         {
             edit.setFingerState(false);
+            //edit.setHybrid(false);
             currentTest = new PresentationShiftTests();
         }
 
         if(in.matches("Finger"))//Tests mouvements absolus
         {
             edit.setFingerState(true);
+            //edit.setHybrid(false);
             currentTest = new PresentationFingerTest();
         }
+
+        /*
+        if(in.matches("Hybrid"))//Tests mouvements finger une fois puis only pads
+        {
+            edit.setFingerState(true);
+            edit.setHybrid(true);
+            currentTest = new PresentationHybridTest();
+        }
+
+         */
     }
 
     public void generateContext()
