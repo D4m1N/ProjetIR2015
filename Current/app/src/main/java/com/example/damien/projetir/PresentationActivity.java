@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.damien.projetir.CustomEdit.CustomEdit;
 import com.example.damien.projetir.CustomEdit.KeyLogger;
 import com.example.damien.projetir.Presentations.PresentationFingerTest;
+import com.example.damien.projetir.Presentations.PresentationHybridTest;
 import com.example.damien.projetir.Presentations.PresentationShiftTests;
 import com.example.damien.projetir.Presentations.Presentations;
 import com.example.damien.projetir.Tests.FileManager;
@@ -62,6 +63,13 @@ public class PresentationActivity extends AppCompatActivity {
             Toast.makeText(this, "Finger", Toast.LENGTH_SHORT).show();
             _settings_FirstTest = "Finger";
             return new PresentationFingerTest();
+        }
+
+        if(in == '2')
+        {
+            Toast.makeText(this, "Hybrid", Toast.LENGTH_SHORT).show();
+            _settings_FirstTest = "Hybrid";
+            return new PresentationHybridTest();
         }
 
         return null;

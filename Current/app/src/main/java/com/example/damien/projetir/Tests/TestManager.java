@@ -11,6 +11,7 @@ import com.example.damien.projetir.ChooseYourName;
 import com.example.damien.projetir.CustomEdit.CustomEdit;
 import com.example.damien.projetir.CustomEdit.Logger;
 import com.example.damien.projetir.Presentations.PresentationFingerTest;
+import com.example.damien.projetir.Presentations.PresentationHybridTest;
 import com.example.damien.projetir.Presentations.PresentationShiftTests;
 import com.example.damien.projetir.Presentations.Presentations;
 import com.example.damien.projetir.Tests.Difficulty.*;
@@ -89,7 +90,11 @@ public class TestManager
         scenarios.addElement(new Scenario(new Medium(), new Far(), new Left()));
         scenarios.addElement(new Scenario(new Hard(), new Far(), new Left()));
 
-        totalTestNumber = scenarios.size() * 2;
+        if(edit.isHybrid())
+            totalTestNumber = scenarios.size();
+        else
+            totalTestNumber = scenarios.size() * 2;
+
         done = false;
     }
 
@@ -113,18 +118,18 @@ public class TestManager
         if(in.matches("Shifts"))//Tests mouvements relatifs
         {
             edit.setFingerState(false);
-            //edit.setHybrid(false);
+            edit.setHybrid(false);
             currentTest = new PresentationShiftTests();
         }
 
         if(in.matches("Finger"))//Tests mouvements absolus
         {
             edit.setFingerState(true);
-            //edit.setHybrid(false);
+            edit.setHybrid(false);
             currentTest = new PresentationFingerTest();
         }
 
-        /*
+
         if(in.matches("Hybrid"))//Tests mouvements finger une fois puis only pads
         {
             edit.setFingerState(true);
@@ -132,7 +137,7 @@ public class TestManager
             currentTest = new PresentationHybridTest();
         }
 
-         */
+
     }
 
     public void generateContext()
